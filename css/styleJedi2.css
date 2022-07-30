@@ -34,9 +34,9 @@ h1{
 
 .Jedi img{
     width: 600px;
-    height: 400px;
+    height: 300px;
     background-image: url('../img/Jedis.jpg');
-    background-size: 600px 400px;
+    background-size: 600px 300px;
     background-repeat: no-repeat;
     margin-bottom: 40px;
     overflow: hidden;
