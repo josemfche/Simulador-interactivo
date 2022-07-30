@@ -86,17 +86,6 @@ Ahsoka.addEventListener('click', function(){
         console.log(ventaAhsokaFinal)
 })
 
-// const total = ventaQuingonFinal.reduce((acc, el) => acc + el.ventaQuingon)
-// console.log(total)
-
-// for(let i=0; i < ventaQuingon.length; i++){
-//     console.log(ventaQuingonFinal[i])
-// }
-
-// const total = ventaQuingonFinal.length
-
-// console.log(total)
-
 
 // La idea es totalizar lo que me da y mostrarlo pero no estoy pudiendo acceder a las variables ventaQuingonFinal, ventaLukeFinal y ventaAhsokaFinal fuera de las funciones
 
