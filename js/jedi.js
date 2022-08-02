@@ -2,98 +2,71 @@ alert("Que la fuerza siempre te acompañe")
 
 // Un carrito de productos que suma y hace subtotales para pagar es JS
 
-const funkoQuigon = {
-    nombre:"Quigon", 
-    precio: 20,
-    stock: 10,
+const productos = [
+    {nombre:"Quigon", precio: 20,stock: 10},
+
+    {nombre:"Luke", precio: 50,stock: 8},
+    
+    {nombre:"Ahsoka", precio: 30,stock: 6},
+]
+
+let carrito = [];
+
+let seleccion = prompt("Hola desea comprar algun producto, si o no")
+
+while(seleccion != "si" && seleccion != "no"){
+    alert("Por favor ingresar si o no")
+    seleccion = prompt("Hola desea comprar algun producto, si o no")
 }
 
-const funkoLuke = {
-    nombre:"Luke", 
-    precio: 50,
-    stock: 8,
+if(seleccion == "si"){
+    alert("a continuacion nuestra lista de productos")
+    let todoslosProductos = productos.map((productos) => productos.nombre + " " + productos.precio + "$")
+    alert(todoslosProductos.join(" - "))
+} else if (seleccion == "no"){
+    alert("Gracias por venir hasta pronto!")
 }
 
-const funkoAhsoka = {
-    nombre:"Ahsoka", 
-    precio: 30,
-    stock: 6,
+while(seleccion == "si"){
+    let productoseleccionado = prompt ("Agrega un producto a tu carrito")
+    let precio = 0
+
+    if(productoseleccionado == "Quigon" || productoseleccionado == "Luke" || productoseleccionado == "Ahsoka"){
+        switch(productoseleccionado){
+            case "Quigon":
+                nombre = "Quigon"
+                precio = 20
+                break;
+            case "Luke":
+                nombre = "Luke"
+                precio = 50
+                break;
+            case "Ahsoka":
+                nombre = "Ahsoka"
+                precio = 30
+                break;
+            default:
+                break;
+        }
+
+    let unidades = parseInt(prompt("Cuantas unidades quiere llevar"))
+
+    carrito.push({nombre, unidades, precio})
+    } else{
+        alert("No tenemos ese producto")
+    }
+
+    let seleccion = prompt("Desea seguir comprando?")
+
+    while(seleccion == "no"){
+        alert ("Gracias por la compra! Hasta pronto")
+        break;
+    }
+    carrito.forEach((carrito) => {
+        console.log(`Producto: ${carrito.nombre}, unidades: ${carrito.unidades},
+        total a pagar por producto ${carrito.unidades * carrito.precio}`)   
+    })
 }
 
-let CantidadVendidaQuingon = 0;
-let CantidadVendidaLuke = 0;
-let CantidadVendidaAhsoka = 0;
-let vendido = false;
-
-let Quigon = document.getElementById('funkoQuin')
-let Luke = document.getElementById('funkoLuke')
-let Ahsoka = document.getElementById('funkoAhsoka')
-
-let ventaQuingon = 0;
-let ventaLuke = 0;
-let ventaAhsoka = 0;
-
-let ventaQuingonFinal = [];
-let ventaLukeFinal = [];
-let ventaAhsokaFinal = [];
-
-Quigon.addEventListener('click', function(){
-    vendido = true
-    CantidadVendidaQuingon++
-    let nuevoStockQuin = funkoQuigon.stock - CantidadVendidaQuingon
-    if (vendido == true && nuevoStockQuin>1){
-        ventaQuingon = CantidadVendidaQuingon * funkoQuigon.precio
-        console.log("Cantidad vendida " + CantidadVendidaQuingon)
-        console.log("Total venta Funkos Quingon = $" + ventaQuingon)
-        console.log("Me quedan " + nuevoStockQuin)
-        ventaQuingonFinal.push(ventaQuingon);
-        } else{
-            console.log("Producto agotado") 
-        }
-    console.log(ventaQuingonFinal)
-})
-
-
-Luke.addEventListener('click', function(){
-    vendido = true
-    CantidadVendidaLuke++
-    let nuevoStockLuke = funkoLuke.stock - CantidadVendidaLuke
-    if (vendido == true && nuevoStockLuke>1){
-        ventaLuke = CantidadVendidaLuke * funkoLuke.precio
-        console.log("Cantidad vendida " + CantidadVendidaLuke)
-        console.log("Total venta Funkos Luke = $" + ventaLuke)
-        console.log("Me quedan " + nuevoStockLuke)
-        ventaLukeFinal.push(ventaLuke);
-        } else{
-            console.log("Producto agotado") 
-        }
-        console.log(ventaLukeFinal)
-})
-
-Ahsoka.addEventListener('click', function(){
-    vendido = true
-    CantidadVendidaAhsoka++
-    let nuevoStockAhsoka = funkoAhsoka.stock - CantidadVendidaAhsoka
-    if (vendido == true && nuevoStockAhsoka>1){
-        ventaAhsoka = CantidadVendidaAhsoka * funkoAhsoka.precio
-        console.log("Cantidad vendida " + CantidadVendidaAhsoka)
-        console.log("Total venta Funkos Ahsoka = $" + ventaAhsoka)
-        console.log("Me quedan " + nuevoStockAhsoka)
-        ventaAhsokaFinal.push(ventaAhsoka);
-        } else{
-            console.log("Producto agotado") 
-        }
-        console.log(ventaAhsokaFinal)
-})
-
-
-// La idea es totalizar lo que me da y mostrarlo pero no estoy pudiendo acceder a las variables ventaQuingonFinal, ventaLukeFinal y ventaAhsokaFinal fuera de las funciones
-
-// let totalVenta = ventaQuingonFinal + ventaLukeFinal + ventaAhsokaFinal;
-// document.getElementById('carrito').innerHTML = "Debes pagar " + totalVenta + " dolares"
-
-
-
-
-
-
+const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0)
+console.log(`El total a pagar por su compra es: ${total}`)

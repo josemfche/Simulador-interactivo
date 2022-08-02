@@ -1,5 +1,5 @@
 body{
-    background-color: #161880;
+    background-color: #0a0a34;
     color: #fff;
 }
 
@@ -27,18 +27,26 @@ h1{
     text-align: center;
 }
 
+h2{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 60px;
+}
+
 .Jedi{
     display: flex;
     justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 .Jedi img{
-    width: 600px;
-    height: 300px;
+    width: 100%;
+    height: 500px;
     background-image: url('../img/Jedis.jpg');
-    background-size: 600px 300px;
+    background-size: 100% 500px;
     background-repeat: no-repeat;
-    margin-bottom: 40px;
+    margin-top: 20px;
     overflow: hidden;
     border: none;
 }
